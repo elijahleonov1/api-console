@@ -142,6 +142,7 @@
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.1.4",
+    "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
     "redux-devtools-extension": "^2.13.8",
     "sass": "^1.26.8",
