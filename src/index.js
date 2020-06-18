@@ -12,7 +12,7 @@ import thunk from 'redux-thunk'
 
 import rootReducers from './store/rootReducers'
 
-import App from './App'
+import App from './page/App'
 import * as serviceWorker from './serviceWorker'
 
 const history = createBrowserHistory()
