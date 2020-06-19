@@ -3,6 +3,9 @@
 @import "variables";
 
 body {
+  display: flex;
+  flex-grow: 1;
+
   font-family: 'Roboto';
   font-style: normal;
   font-weight: $baceFontWeight;
@@ -10,4 +13,9 @@ body {
   line-height: $baceLineHeight;
 
   color: $fontBaceColor;
+}
+
+#root{
+  display: flex;
+  flex-grow: 1;
 }

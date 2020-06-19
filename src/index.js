@@ -12,7 +12,6 @@ import thunk from 'redux-thunk'
 import Router from './page/Router'
 import rootReducers from './store/rootReducers'
 
-import App from './page/App'
 import * as serviceWorker from './serviceWorker'
 
 import './assets/styled/index.scss'

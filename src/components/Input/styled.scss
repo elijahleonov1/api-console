@@ -1,12 +1,12 @@
 @import "@styled/variables";
 .Input-wrapper {
-  margin: 10px;
+
 }
 
 .Lable-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   margin-bottom: 5px;
   padding-left: 1px;
   padding-right: 1px;
@@ -43,6 +43,7 @@
 .Lable-wrapper .Error {
   color: $errorFontColor;
 }
+
 .Input.Error {
   border-color:$errorFontColor;
   box-shadow: $errorShadowColor;

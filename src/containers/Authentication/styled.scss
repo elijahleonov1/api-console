@@ -1,0 +1,52 @@
+@import "@styled/variables";
+
+.Authentication-wrapper{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Authentication-container {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  display: flex;
+  flex-flow: column;
+}
+
+.Authentication{
+  width: 400px;
+  height: auto;
+  margin: 20px 0;
+  padding: 40px 30px;
+
+  box-shadow: 0px 4px 10px $lightBorderColor;
+  border-radius: $baceBorderRadius;
+  background: $whiteColor;
+}
+
+.Authentication-logo {
+  align-self: center;
+}
+
+.Authentication-title {
+  font-size: $xlFontSize;
+  line-height: $baceLineHeight;
+  margin-bottom: 20px;
+}
+
+.Authentication-input {
+  margin: 20px 0;
+}
+
+.Authentication-button {
+  margin-top: 20px;
+}
