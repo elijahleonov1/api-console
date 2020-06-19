@@ -1,0 +1,36 @@
+@import "@styled/variables";
+
+$loaderItemWidtch: 7px;
+
+.Loader-wrapper {
+  position: relative;
+  left: calc(50% - #{$loaderItemWidtch});
+  width: 100%;
+}
+.Loader-wrapper .Loader-item {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: $loaderItemWidtch;
+  height: 2px;
+
+  background-color: $whiteColor;
+  border-radius: 50px;
+
+  transform-origin: 12px;
+  animation: lds-loader .8s ease-out infinite;
+
+  @for $i from 1 through 8 {
+    &:nth-child(#{$i}) {
+      transform: rotate(#{$i * 45deg});
+      animation-delay: -#{$i / 10}s;
+    }
+  }
+}
+
+@keyframes lds-loader {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
