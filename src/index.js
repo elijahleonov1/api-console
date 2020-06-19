@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { ConnectedRouter, routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 
@@ -10,6 +9,7 @@ import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
+import Router from './page/Router'
 import rootReducers from './store/rootReducers'
 
 import App from './page/App'
@@ -29,7 +29,7 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <App />
+            <Router />
         </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
