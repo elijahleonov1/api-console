@@ -1,3 +1,13 @@
 @import "reset";
+@import "fonts";
 @import "variables";
 
+body {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: $baceFontWeight;
+  font-size: $baceFontSize;
+  line-height: $baceLineHeight;
+
+  color: $fontBaceColor;
+}
