@@ -15,6 +15,8 @@ import rootReducers from './store/rootReducers'
 import App from './page/App'
 import * as serviceWorker from './serviceWorker'
 
+import './assets/styled/index.scss'
+
 const history = createBrowserHistory()
 
 const store = createStore(
