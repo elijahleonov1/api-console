@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Loader from '../Loader'
+import Loader from '@components/Loader'
 import './styled.scss'
 
 const Button = ({ text, isDisabled = false, isLoading = false }) => {
