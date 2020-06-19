@@ -8,26 +8,25 @@ const Input = ({
     placeholder = '',
     rightLable = '',
     leftLable = '',
-    isError = true,
+    isError = false,
     handlerChange,
 }) => {
     const [value, setValue] = useState('')
-    const [error, setError] = useState(isError)
 
     const onChangeInput = (e) => {
         setValue(e.target.value)
         handlerChange(value)
     }
 
-    const errorClass = error ? 'Error' : ''
+    const errorClass = isError ? 'Error' : ''
 
     return (
         <div className="Input-wrapper">
             <p className="Lable-wrapper">
-                <lable className={`Lable-right ${errorClass}`}>
+                <span className={`Lable-right ${errorClass}`}>
                     {rightLable}
-                </lable>
-                <lable className="Lable-left">{leftLable}</lable>
+                </span>
+                <span className="Lable-left">{leftLable}</span>
             </p>
             <input
                 type={type}
