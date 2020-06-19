@@ -22,9 +22,9 @@ const Input = ({ defaultValue = '', placeholder = '', handlerChange }) => {
 }
 
 Input.propTypes = {
-    defaultValue: string,
-    placeholder: string,
-    handlerChange: func.isRequired,
+    defaultValue: PropTypes.string,
+    placeholder: PropTypes.string,
+    handlerChange: PropTypes.func.isRequired,
 }
 
 export default Input
