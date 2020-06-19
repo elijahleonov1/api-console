@@ -1,4 +1,27 @@
-@import "~/assets/styled/variables";
-body {
-  background-color: $baseColor;
+@import "@styled/variables";
+
+.Logo-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 115px;
+}
+
+.Logo-wrapper .Circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: $grayBaceColor;
+}
+
+.Logo-wrapper .Rectangle {
+  width: 15px;
+  height: 30px;
+  background-color: $grayBaceColor;
+}
+
+.Logo-wrapper .Rectangle-inclined {
+  width: 17px;
+  height: 30px;
+  transform: skewX(-30deg);
+  background-color: $grayBaceColor;
 }
