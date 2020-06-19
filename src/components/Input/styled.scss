@@ -1,0 +1,18 @@
+@import "@styled/variables";
+
+.Input{
+  width: 100%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border: 1px solid $normalBorderColor;
+  border-radius: $baceBorderRadius;
+
+  &:hover{
+    border-color: $hoverBorderColor;
+  }
+
+  &:focus {
+    border-color: $hoverBorderColor;
+    box-shadow: 0 0 0 2px $normalBorderColor;
+  }
+}

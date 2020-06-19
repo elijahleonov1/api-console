@@ -17,7 +17,7 @@ $loaderItemWidtch: 7px;
   height: 2px;
 
   background-color: $whiteColor;
-  border-radius: 50px;
+  border-radius: $circleBorderRadius;
 
   transform-origin: 12px;
   animation: lds-loader .8s ease-out infinite;

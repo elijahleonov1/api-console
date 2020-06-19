@@ -18,7 +18,7 @@ $activeColorBtn: linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15))
 $disabledColorBtn: linear-gradient(0deg, #C4C4C4, #C4C4C4), linear-gradient(180deg, #45A6FF 0%, #0055FB 100%);
 $borderFocusBtn: 2px solid #45A5FF;
 
-// ### fonts opts
+// ### fonts
 $xsFontSize: 12px;
 $smFontSize: 14px;
 $mdFontSize: 16px;
@@ -36,3 +36,12 @@ $lgFontWeight: 500;
 $xlFontWeight: 700;
 $xxlFontWeight: 900;
 $baceFontWeight: $lgFontWeight;
+
+// ### radius
+$baceBorderRadius: 5px;
+$circleBorderRadius: 50px;
+
+// ### input
+
+$normalBorderColor: rgba(0, 0, 0, 0.2);
+$hoverBorderColor: rgba(0, 0, 0, 0.4);

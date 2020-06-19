@@ -10,7 +10,7 @@
 
   color: $whiteColor;
   border: none;
-  border-radius: 5px;
+  border-radius: $baceBorderRadius;
   background: $normalColorBtn;
 
   font-weight: $lgFontWeight;
