@@ -313,6 +313,8 @@ module.exports = function (webpackEnv) {
                 '@containers': paths.containers,
                 '@utils': paths.utils,
                 '@api': paths.api,
+                '@actions': paths.actions,
+                '@reducers': paths.reducers,
             },
             plugins: [
                 // Adds support for installing with Plug'n'Play, leading to faster installs and adding

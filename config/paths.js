@@ -61,6 +61,8 @@ module.exports = {
     appIndexJs: resolveModule(resolveApp, 'src/index'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
+    reducers: resolveApp('src/store/rootReducers'),
+    actions: resolveApp('src/store/rootActions'),
     assets: resolveApp('src/assets'),
     styled: resolveApp('src/assets/styled'),
     components: resolveApp('src/components'),
