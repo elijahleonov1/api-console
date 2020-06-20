@@ -10,18 +10,18 @@
   width: 30px;
   height: 30px;
   border-radius: $circleBorderRadius;
-  background-color: $grayBaceColor;
+  background-color: $normalBorderColor;
 }
 
 .Logo-wrapper .Rectangle {
   width: 15px;
   height: 30px;
-  background-color: $grayBaceColor;
+  background-color: $normalBorderColor;
 }
 
 .Logo-wrapper .Rectangle-inclined {
   width: 17px;
   height: 30px;
   transform: skewX(-30deg);
-  background-color: $grayBaceColor;
+  background-color: $normalBorderColor;
 }

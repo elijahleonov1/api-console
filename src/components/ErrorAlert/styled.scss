@@ -1,0 +1,52 @@
+@import "@styled/variables";
+
+.Error-wrapper {
+  background: $errorBackroundColor;
+  color: $errorFontColor;
+  border-radius: $baceBorderRadius;
+  padding: 15px 12px;
+}
+.Error-title{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.Error-text{
+  margin-left: 33px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color:$errorLightFontColor;
+}
+.Smail {
+  position: relative;
+  top: 4px;
+  display: flex;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border: 2px solid $errorFontColor;
+  border-radius: $circleBorderRadius;
+  margin-right: 10px;
+  float: left;
+
+  .eye {
+    position: relative;
+    top: 3px;
+    margin: 2px;
+    width: 3px;
+    height: 3px;
+    background: $errorFontColor;
+    border-radius: $circleBorderRadius;
+  }
+  .mouth {
+    position: absolute;
+    top: 13px;
+    width: 11px;
+    height: 2px;
+    background: $errorFontColor;
+    border-radius: $baceBorderRadius;
+  }
+}

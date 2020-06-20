@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Logo from '@components/Logo'
 import Input from '@components/Input'
 import Button from '@components/Button'
+import ErrorAlert from '@components/ErrorAlert'
 import './styled.scss'
 
 const Authentication = () => {
@@ -31,6 +32,13 @@ const Authentication = () => {
                 </div>
                 <form className="Authentication" onSubmit={handlerSubmit}>
                     <h4 className="Authentication-title">API-консолька</h4>
+                    <ErrorAlert
+                        title={'Вход не вышел'}
+                        errorText={JSON.stringify({
+                            id: 'error/auth/failed',
+                            explain: 'wrong_credentials',
+                        })}
+                    />
                     <div className="Authentication-input">
                         <Input
                             rightLable={'Логин'}
