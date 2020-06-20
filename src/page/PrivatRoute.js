@@ -36,7 +36,7 @@ PrivatRote.propTupes = {
 }
 
 const matToStatePtops = (state, ownProps) => ({
-    isAuth: true,
+    isAuth: false,
 })
 
 export default connect(matToStatePtops, null)(PrivatRote)

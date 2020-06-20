@@ -65,6 +65,8 @@ module.exports = {
     styled: resolveApp('src/assets/styled'),
     components: resolveApp('src/components'),
     containers: resolveApp('src/containers'),
+    utils: resolveApp('src/utils'),
+    api: resolveApp('src/utils/api/index'),
     appTsConfig: resolveApp('tsconfig.json'),
     appJsConfig: resolveApp('jsconfig.json'),
     yarnLockFile: resolveApp('yarn.lock'),

@@ -4,18 +4,15 @@ import './styled.scss'
 
 const Input = ({
     type = 'text',
-    defaultValue = '',
+    value = '',
     placeholder = '',
     rightLable = '',
     leftLable = '',
     isError = false,
     handlerChange,
 }) => {
-    const [value, setValue] = useState('')
-
     const onChangeInput = (e) => {
-        setValue(e.target.value)
-        handlerChange(value)
+        handlerChange(e.target.value)
     }
 
     const errorClass = isError ? 'Error' : ''
@@ -31,7 +28,7 @@ const Input = ({
             <input
                 type={type}
                 className={`Input ${errorClass}`}
-                defaultValue={defaultValue}
+                value={value}
                 onChange={onChangeInput}
                 placeholder={placeholder}
             />
@@ -41,7 +38,7 @@ const Input = ({
 
 Input.propTypes = {
     type: PropTypes.string,
-    defaultValue: PropTypes.string,
+    value: PropTypes.string,
     placeholder: PropTypes.string,
     rightLable: PropTypes.string,
     leftLable: PropTypes.string,

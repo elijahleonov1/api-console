@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import * as API from '@api'
+
 import Logo from '@components/Logo'
 import Input from '@components/Input'
 import Button from '@components/Button'
@@ -7,22 +9,47 @@ import ErrorAlert from '@components/ErrorAlert'
 import GitLink from '@components/GitLink'
 import './styled.scss'
 
+const auth = ({ login, sublogin, password, setErrorText }) => {
+    API.sendsay
+        .login({
+            login,
+            sublogin,
+            password,
+        })
+        .then(() => {
+            debugger
+            setErrorText('')
+        })
+        .catch(({ id, explain }) => {
+            setErrorText(JSON.stringify({ id, explain: 'explain' }))
+        })
+}
+
 const Authentication = () => {
+    const [login, setLogin] = useState('')
+    const [sublogin, setSublogin] = useState('')
+    const [password, setPassword] = useState('')
+    const [errorText, setErrorText] = useState('')
+
     const handlerLogin = (value) => {
-        console.log(value)
+        setLogin(value)
     }
 
     const handlerSubLogin = (value) => {
-        console.log(value)
+        setSublogin(value)
     }
 
     const handlerPassword = (value) => {
-        console.log(value)
+        setPassword(value)
     }
 
     const handlerSubmit = (e) => {
         e.preventDefault()
-        console.log(1)
+        auth({ login, sublogin, password, setErrorText })
+
+        setLogin('')
+        setSublogin('')
+        setPassword('')
     }
 
     return (
@@ -34,16 +61,14 @@ const Authentication = () => {
                 <form className="Authentication" onSubmit={handlerSubmit}>
                     <h4 className="Authentication-title">API-консолька</h4>
                     <ErrorAlert
-                        isShow={false}
+                        isShow={!!errorText}
                         title={'Вход не вышел'}
-                        errorText={JSON.stringify({
-                            id: 'error/auth/failed',
-                            explain: 'wrong_credentials',
-                        })}
+                        errorText={errorText}
                     />
                     <div className="Authentication-input">
                         <Input
                             rightLable={'Логин'}
+                            value={login}
                             handlerChange={handlerLogin}
                         />
                     </div>
@@ -51,6 +76,7 @@ const Authentication = () => {
                         <Input
                             rightLable={'Сублогин'}
                             leftLable={'опционально'}
+                            value={sublogin}
                             handlerChange={handlerSubLogin}
                         />
                     </div>
@@ -59,6 +85,7 @@ const Authentication = () => {
                             type={'password'}
                             rightLable={'Пароль'}
                             isError={true}
+                            value={password}
                             handlerChange={handlerPassword}
                         />
                     </div>
