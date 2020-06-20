@@ -4,6 +4,7 @@ import Logo from '@components/Logo'
 import Input from '@components/Input'
 import Button from '@components/Button'
 import ErrorAlert from '@components/ErrorAlert'
+import GitLink from '@components/GitLink'
 import './styled.scss'
 
 const Authentication = () => {
@@ -33,6 +34,7 @@ const Authentication = () => {
                 <form className="Authentication" onSubmit={handlerSubmit}>
                     <h4 className="Authentication-title">API-консолька</h4>
                     <ErrorAlert
+                        isShow={false}
                         title={'Вход не вышел'}
                         errorText={JSON.stringify({
                             id: 'error/auth/failed',
@@ -64,9 +66,7 @@ const Authentication = () => {
                         <Button text={'Войти'} />
                     </div>
                 </form>
-                <a href="#" target="_blank" className="link">
-                    @gitn-link
-                </a>
+                <GitLink>@elijah___leonov</GitLink>
             </div>
         </div>
     )
