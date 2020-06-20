@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect, Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const PrivatRote = ({ component: Component, isAuth, ...res }) => {
     const render =
@@ -27,6 +28,11 @@ const PrivatRote = ({ component: Component, isAuth, ...res }) => {
             }}
         />
     )
+}
+
+PrivatRote.propTupes = {
+    component: PropTypes.element,
+    isAuth: PropTypes.bool,
 }
 
 const matToStatePtops = (state, ownProps) => ({
