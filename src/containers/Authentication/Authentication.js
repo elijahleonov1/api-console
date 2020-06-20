@@ -29,22 +29,30 @@ const Authentication = () => {
     const [login, setLogin] = useState('')
     const [sublogin, setSublogin] = useState('')
     const [password, setPassword] = useState('')
+
+    const [errorLogin, setErrorLogin] = useState(false)
+    const [errorSublogin, setErrorSublogin] = useState(false)
+    const [errorPassword, setErrorPassword] = useState(false)
+
     const [errorText, setErrorText] = useState('')
 
-    const handlerLogin = (value) => {
-        setLogin(value)
-    }
-
-    const handlerSubLogin = (value) => {
-        setSublogin(value)
-    }
-
-    const handlerPassword = (value) => {
-        setPassword(value)
-    }
+    const handlerLogin = (value) => setLogin(value)
+    const handlerSubLogin = (value) => setSublogin(value)
+    const handlerPassword = (value) => setPassword(value)
 
     const handlerSubmit = (e) => {
         e.preventDefault()
+
+        const isLoginValid = true
+        const isSubloginValid = false
+        const isPasswordValid = true
+
+        setErrorLogin(isLoginValid)
+        setErrorSublogin(isSubloginValid)
+        setErrorPassword(isPasswordValid)
+
+        if (isLoginValid || isSubloginValid || isPasswordValid) return
+
         auth({ login, sublogin, password, setErrorText })
 
         setLogin('')
@@ -69,6 +77,7 @@ const Authentication = () => {
                         <Input
                             rightLable={'Логин'}
                             value={login}
+                            isError={errorLogin}
                             handlerChange={handlerLogin}
                         />
                     </div>
@@ -77,6 +86,7 @@ const Authentication = () => {
                             rightLable={'Сублогин'}
                             leftLable={'опционально'}
                             value={sublogin}
+                            isError={errorSublogin}
                             handlerChange={handlerSubLogin}
                         />
                     </div>
@@ -86,6 +96,7 @@ const Authentication = () => {
                             rightLable={'Пароль'}
                             isError={true}
                             value={password}
+                            isError={errorPassword}
                             handlerChange={handlerPassword}
                         />
                     </div>
