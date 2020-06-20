@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import * as API from '@api'
+import utils from '@utils/common'
 
 import Logo from '@components/Logo'
 import Input from '@components/Input'
@@ -43,15 +44,15 @@ const Authentication = () => {
     const handlerSubmit = (e) => {
         e.preventDefault()
 
-        const isLoginValid = true
-        const isSubloginValid = false
-        const isPasswordValid = true
+        const isLoginValid = utils.validation.email(login)
+        const isSubloginValid = utils.validation.sublogin(sublogin)
+        const isPasswordValid = utils.validation.password(password)
 
-        setErrorLogin(isLoginValid)
-        setErrorSublogin(isSubloginValid)
-        setErrorPassword(isPasswordValid)
+        setErrorLogin(!isLoginValid)
+        setErrorSublogin(!isSubloginValid)
+        setErrorPassword(!isPasswordValid)
 
-        if (isLoginValid || isSubloginValid || isPasswordValid) return
+        if (!isLoginValid || !isSubloginValid || !isPasswordValid) return
 
         auth({ login, sublogin, password, setErrorText })
 
