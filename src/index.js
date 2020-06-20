@@ -20,9 +20,7 @@ const history = createBrowserHistory()
 
 const store = createStore(
     rootReducers(history),
-    composeWithDevTools(
-        applyMiddleware(compose(thunk, routerMiddleware(history)))
-    )
+    composeWithDevTools(applyMiddleware(compose(thunk)))
 )
 
 ReactDOM.render(

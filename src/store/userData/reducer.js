@@ -5,8 +5,8 @@ const initialState = {
     errorMessage: null,
 }
 
-export default function userData(state = initialState, actions) {
-    switch (actions.type) {
+export default function userData(state = initialState, action) {
+    switch (action.type) {
         case FETH_AUTH:
             return {
                 ...state,

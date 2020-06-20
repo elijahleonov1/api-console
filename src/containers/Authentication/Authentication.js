@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import * as API from '@api'
+import { fethAuth } from '@actions'
+
 import utils from '@utils/common'
 
 import Logo from '@components/Logo'
@@ -10,23 +11,7 @@ import ErrorAlert from '@components/ErrorAlert'
 import GitLink from '@components/GitLink'
 import './styled.scss'
 
-const auth = ({ login, sublogin, password, setErrorText }) => {
-    API.sendsay
-        .login({
-            login,
-            sublogin,
-            password,
-        })
-        .then(() => {
-            debugger
-            setErrorText('')
-        })
-        .catch(({ id, explain }) => {
-            setErrorText(JSON.stringify({ id, explain: 'explain' }))
-        })
-}
-
-const Authentication = () => {
+const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
     const [login, setLogin] = useState('')
     const [sublogin, setSublogin] = useState('')
     const [password, setPassword] = useState('')
@@ -35,8 +20,6 @@ const Authentication = () => {
     const [errorSublogin, setErrorSublogin] = useState(false)
     const [errorPassword, setErrorPassword] = useState(false)
 
-    const [errorText, setErrorText] = useState('')
-
     const handlerLogin = (value) => setLogin(value)
     const handlerSubLogin = (value) => setSublogin(value)
     const handlerPassword = (value) => setPassword(value)
@@ -44,7 +27,7 @@ const Authentication = () => {
     const handlerSubmit = (e) => {
         e.preventDefault()
 
-        const isLoginValid = utils.validation.email(login, 5)
+        const isLoginValid = utils.validation.email(login, 5) || true
         const isPasswordValid = utils.validation.password(password, 5)
         const isSubloginValid =
             sublogin.length > 0 ? utils.validation.sublogin(sublogin) : true
@@ -55,7 +38,7 @@ const Authentication = () => {
 
         if (!isLoginValid || !isSubloginValid || !isPasswordValid) return
 
-        auth({ login, sublogin, password, setErrorText })
+        fetchLogin({ login, sublogin, password })
 
         setLogin('')
         setSublogin('')
@@ -71,9 +54,9 @@ const Authentication = () => {
                 <form className="Authentication" onSubmit={handlerSubmit}>
                     <h4 className="Authentication-title">API-консолька</h4>
                     <ErrorAlert
-                        isShow={!!errorText}
+                        isShow={!!errorMessageAuth}
                         title={'Вход не вышел'}
-                        errorText={errorText}
+                        errorText={errorMessageAuth}
                     />
                     <div className="Authentication-input">
                         <Input
@@ -112,4 +95,13 @@ const Authentication = () => {
     )
 }
 
-export default connect(null, null)(Authentication)
+const mapStateToProps = (state) => ({
+    isAuth: state.userData.isAuth,
+    errorMessageAuth: state.userData.errorMessage,
+})
+const mapDispatchToProps = (dispatch) => ({
+    fetchLogin: ({ login, sublogin, password }) =>
+        dispatch(fethAuth({ login, sublogin, password })),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authentication)

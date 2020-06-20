@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 const PrivatRote = ({ component: Component, isAuth, ...res }) => {
     const render =
         res.render && typeof res.render === 'function' ? res.render : null
-    debugger
     return (
         <Route
             {...res}
