@@ -44,9 +44,10 @@ const Authentication = () => {
     const handlerSubmit = (e) => {
         e.preventDefault()
 
-        const isLoginValid = utils.validation.email(login)
-        const isSubloginValid = utils.validation.sublogin(sublogin)
-        const isPasswordValid = utils.validation.password(password)
+        const isLoginValid = utils.validation.email(login, 5)
+        const isPasswordValid = utils.validation.password(password, 5)
+        const isSubloginValid =
+            sublogin.length > 0 ? utils.validation.sublogin(sublogin) : true
 
         setErrorLogin(!isLoginValid)
         setErrorSublogin(!isSubloginValid)
