@@ -1,12 +1,16 @@
-import { GET_USER_DATA } from './actionType'
+import { FETH_AUTH } from './actionType'
 
-const initialState = {}
+const initialState = {
+    isAuth: null,
+    errorMessage: null,
+}
 
 export default function userData(state = initialState, actions) {
     switch (actions.type) {
-        case GET_USER_DATA:
+        case FETH_AUTH:
             return {
                 ...state,
+                ...action.payload,
             }
         default:
             return state

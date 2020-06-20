@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 const PrivatRote = ({ component: Component, isAuth, ...res }) => {
     const render =
         res.render && typeof res.render === 'function' ? res.render : null
-
+    debugger
     return (
         <Route
             {...res}
@@ -35,8 +35,8 @@ PrivatRote.propTupes = {
     isAuth: PropTypes.bool,
 }
 
-const matToStatePtops = (state, ownProps) => ({
-    isAuth: false,
+const mapStateToProps = (state) => ({
+    isAuth: state.userData.isAuth,
 })
 
-export default connect(matToStatePtops, null)(PrivatRote)
+export default connect(mapStateToProps, null)(PrivatRote)
