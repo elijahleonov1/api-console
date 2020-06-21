@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { fethAuth } from '@actions'
 
@@ -9,7 +9,7 @@ import Input from '@components/Input'
 import Button from '@components/Button'
 import ErrorAlert from '@components/ErrorAlert'
 import GitLink from '@components/GitLink'
-import './styled.scss'
+import s from './Authentication.module.scss'
 
 const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
     const [login, setLogin] = useState('')
@@ -46,19 +46,19 @@ const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
     }
 
     return (
-        <div className="Authentication-wrapper">
-            <div className="Authentication-container">
-                <div className="Authentication-logo">
+        <div className={s.Authentication}>
+            <div className={s.AuthenticationContainer}>
+                <div className={s.LogoContainer}>
                     <Logo />
                 </div>
-                <form className="Authentication" onSubmit={handlerSubmit}>
-                    <h4 className="Authentication-title">API-консолька</h4>
+                <form className={s.Form} onSubmit={handlerSubmit}>
+                    <h4 className={s.Title}>API-консолька</h4>
                     <ErrorAlert
                         isShow={!!errorMessageAuth}
                         title={'Вход не вышел'}
                         errorText={errorMessageAuth}
                     />
-                    <div className="Authentication-input">
+                    <div className={s.InputContainer}>
                         <Input
                             rightLable={'Логин'}
                             value={login}
@@ -66,7 +66,7 @@ const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
                             handlerChange={handlerLogin}
                         />
                     </div>
-                    <div className="Authentication-input">
+                    <div className={s.InputContainer}>
                         <Input
                             rightLable={'Сублогин'}
                             leftLable={'опционально'}
@@ -75,7 +75,7 @@ const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
                             handlerChange={handlerSubLogin}
                         />
                     </div>
-                    <div className="Authentication-input">
+                    <div className={s.InputContainer}>
                         <Input
                             type={'password'}
                             rightLable={'Пароль'}
@@ -85,7 +85,7 @@ const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
                             handlerChange={handlerPassword}
                         />
                     </div>
-                    <div className="Authentication-button">
+                    <div className={s.ButtonContainer}>
                         <Button text={'Войти'} />
                     </div>
                 </form>

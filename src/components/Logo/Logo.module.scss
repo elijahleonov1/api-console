@@ -1,25 +1,25 @@
 @import "@styled/variables";
 
-.Logo-wrapper {
+.LogoWrapper {
   display: flex;
   justify-content: space-between;
   width: 115px;
 }
 
-.Logo-wrapper .Circle {
+.Circle {
   width: 30px;
   height: 30px;
   border-radius: $circleBorderRadius;
   background-color: $normalBorderColor;
 }
 
-.Logo-wrapper .Rectangle {
+.Rectangle {
   width: 15px;
   height: 30px;
   background-color: $normalBorderColor;
 }
 
-.Logo-wrapper .Rectangle-inclined {
+.RectangleInclined {
   width: 17px;
   height: 30px;
   transform: skewX(-30deg);

@@ -2,12 +2,12 @@
 
 $loaderItemWidtch: 7px;
 
-.Loader-wrapper {
+.LoaderWrapper {
   position: relative;
   left: calc(50% - #{$loaderItemWidtch});
   width: 100%;
 }
-.Loader-wrapper .Loader-item {
+.LoaderItem {
   display: block;
   position: absolute;
   top: 0;

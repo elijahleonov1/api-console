@@ -1,9 +1,9 @@
 @import "@styled/variables";
-.Input-wrapper {
+.InputWrapper {
 
 }
 
-.Lable-wrapper {
+.LableWrapper {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -12,12 +12,12 @@
   padding-right: 1px;
 }
 
-.Lable-right {
+.LableRight {
   font-size: $baceFontSize;
   line-height: $lightLineHeight;
 }
 
-.Lable-left {
+.LableLeft {
   font-size: $xsFontSize;
   line-height: $lightLineHeight;
   color: $lightFontColor
@@ -40,7 +40,7 @@
   }
 }
 
-.Lable-wrapper .Error {
+.LableWrapper .Error {
   color: $errorFontColor;
 }
 

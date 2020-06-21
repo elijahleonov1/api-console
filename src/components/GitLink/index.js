@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './styled.scss'
+import s from './GitLink.module.scss'
 
 const GitLink = ({ text = '', href = '#', children }) => {
     const textLink = text.leading > 0 ? text : children
     return (
-        <a href={href} className="GitLink" target="_blank">
+        <a href={href} className={s.GitLink} target="_blank">
             {textLink}
         </a>
     )

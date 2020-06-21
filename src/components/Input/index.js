@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import './styled.scss'
+import s from './Input.module.scss'
 
 const Input = ({
     type = 'text',
@@ -15,19 +15,19 @@ const Input = ({
         handlerChange(e.target.value)
     }
 
-    const errorClass = isError ? 'Error' : ''
+    const errorClass = isError ? s.Error : ''
 
     return (
-        <div className="Input-wrapper">
-            <p className="Lable-wrapper">
-                <span className={`Lable-right ${errorClass}`}>
+        <div className={s.InputWrapper}>
+            <p className={s.LableWrapper}>
+                <span className={`${s.LableRight} ${errorClass}`}>
                     {rightLable}
                 </span>
-                <span className="Lable-left">{leftLable}</span>
+                <span className={s.LableLeft}>{leftLable}</span>
             </p>
             <input
                 type={type}
-                className={`Input ${errorClass}`}
+                className={`${s.Input} ${errorClass}`}
                 value={value}
                 onChange={onChangeInput}
                 placeholder={placeholder}

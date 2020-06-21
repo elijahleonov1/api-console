@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Loader from '@components/Loader'
-import './styled.scss'
+import s from './Button.module.scss'
 
 const Button = ({ text, isDisabled = false, isLoading = false }) => {
     return (
-        <button className="Button" disabled={isDisabled}>
+        <button className={s.Button} disabled={isDisabled}>
             {!isLoading && text}
             {isLoading && <Loader />}
         </button>

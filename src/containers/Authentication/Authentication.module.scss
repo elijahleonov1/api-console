@@ -1,6 +1,6 @@
 @import "@styled/variables";
 
-.Authentication-wrapper{
+.Authentication{
   position: absolute;
   top: 0;
   bottom: 0;
@@ -15,7 +15,7 @@
   background: $grayBaceColor;
 }
 
-.Authentication-container {
+.AuthenticationContainer {
   position: relative;
   top: 50%;
   transform: translate(0, -50%);
@@ -24,7 +24,7 @@
   flex-flow: column;
 }
 
-.Authentication{
+.Form{
   width: 450px;
   height: auto;
   margin: 20px 0;
@@ -35,20 +35,20 @@
   background: $whiteColor;
 }
 
-.Authentication-logo {
+.LogoContainer {
   align-self: center;
 }
 
-.Authentication-title {
+.Title {
   font-size: $xlFontSize;
   line-height: $baceLineHeight;
   margin-bottom: 20px;
 }
 
-.Authentication-input {
+.InputContainer {
   margin: 20px 0;
 }
 
-.Authentication-button {
+.ButtonContainer {
   margin-top: 20px;
 }

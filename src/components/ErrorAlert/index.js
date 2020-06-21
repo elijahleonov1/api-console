@@ -1,21 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './styled.scss'
+import s from './ErrorAlert.module.scss'
 
 const ErrorAlert = ({ title = '', errorText = '', isShow = false }) => {
     return (
-        <div
-            className="Error-wrapper"
-            style={{ display: isShow ? '' : 'none' }}
-        >
-            <div className="Smail">
-                <div className="eye"></div>
-                <div className="eye"></div>
-                <div className="mouth"></div>
+        <div className={s.Error} style={{ display: isShow ? '' : 'none' }}>
+            <div className={s.Smail}>
+                <div className={s.Eye}></div>
+                <div className={s.Eye}></div>
+                <div className={s.Mouth}></div>
             </div>
             <div>
-                <h6 className="Error-title">{title}</h6>
-                <pre className="Error-text">{errorText}</pre>
+                <h6 className={s.Title}>{title}</h6>
+                <pre className={s.Text}>{errorText}</pre>
             </div>
         </div>
     )

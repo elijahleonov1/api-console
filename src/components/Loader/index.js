@@ -1,17 +1,17 @@
 import React from 'react'
-import './styled.scss'
+import s from './Loader.module.scss'
 
 const Loader = () => {
     return (
-        <div className="Loader-wrapper">
-            <div className="Loader-item"></div>
-            <div className="Loader-item"></div>
-            <div className="Loader-item"></div>
-            <div className="Loader-item"></div>
-            <div className="Loader-item"></div>
-            <div className="Loader-item"></div>
-            <div className="Loader-item"></div>
-            <div className="Loader-item"></div>
+        <div className={s.LoaderWrapper}>
+            <div className={s.LoaderItem}></div>
+            <div className={s.LoaderItem}></div>
+            <div className={s.LoaderItem}></div>
+            <div className={s.LoaderItem}></div>
+            <div className={s.LoaderItem}></div>
+            <div className={s.LoaderItem}></div>
+            <div className={s.LoaderItem}></div>
+            <div className={s.LoaderItem}></div>
         </div>
     )
 }
