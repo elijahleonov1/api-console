@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { fethAuth } from '@actions'
 
 import utils from '@utils/common'
@@ -11,10 +12,25 @@ import ErrorAlert from '@components/ErrorAlert'
 import GitLink from '@components/GitLink'
 import s from './Authentication.module.scss'
 
-const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
-    const [login, setLogin] = useState('')
-    const [sublogin, setSublogin] = useState('')
-    const [password, setPassword] = useState('')
+const useFetchLogin = ({ login, sublogin, password }) => {
+    if (login && password) {
+        useEffect(() => {
+            fetchLogin({ login, sublogin, password })
+        }, [])
+    }
+}
+
+const Authentication = ({
+    isAuth,
+    errorMessageAuth,
+    fetchLogin,
+    login: storeLogin,
+    sublogin: storeSublogin,
+    password: storePassword,
+}) => {
+    const [login, setLogin] = useState(storeLogin)
+    const [sublogin, setSublogin] = useState(storeSublogin)
+    const [password, setPassword] = useState(storePassword)
 
     const [errorLogin, setErrorLogin] = useState(false)
     const [errorSublogin, setErrorSublogin] = useState(false)
@@ -38,11 +54,16 @@ const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
 
         if (!isLoginValid || !isSubloginValid || !isPasswordValid) return
 
-        fetchLogin({ login, sublogin, password })
+        useFetchLogin({ login, sublogin, password })
 
         setLogin('')
         setSublogin('')
         setPassword('')
+    }
+
+    if (isAuth) {
+        useFetchLogin({ login, sublogin, password })
+        return <Redirect push to="/console" />
     }
 
     return (
@@ -96,9 +117,13 @@ const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
 }
 
 const mapStateToProps = (state) => ({
+    login: state.userData.login,
+    sublogin: state.userData.sublogin,
+    password: state.userData.password,
     isAuth: state.userData.isAuth,
     errorMessageAuth: state.userData.errorMessage,
 })
+
 const mapDispatchToProps = (dispatch) => ({
     fetchLogin: ({ login, sublogin, password }) =>
         dispatch(fethAuth({ login, sublogin, password })),

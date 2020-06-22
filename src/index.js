@@ -18,10 +18,24 @@ import './assets/styled/index.scss'
 
 const history = createBrowserHistory()
 
+const getUserDataFromLocalStorage = (name) => {
+    return JSON.parse(window.localStorage.getItem(name))
+}
+
 const store = createStore(
     rootReducers(history),
+    {
+        userData: getUserDataFromLocalStorage('user_data'),
+    },
     composeWithDevTools(applyMiddleware(compose(thunk)))
 )
+
+store.subscribe(() => {
+    const { userData } = store.getState()
+    console.log(userData)
+
+    window.localStorage.setItem('user_data', JSON.stringify(userData))
+})
 
 ReactDOM.render(
     <Provider store={store}>
