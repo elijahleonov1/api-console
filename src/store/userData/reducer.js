@@ -1,8 +1,11 @@
 import { FETH_AUTH } from './actionType'
 
 const initialState = {
+    login: '',
+    sublogin: '',
+    password: '',
     isAuth: null,
-    errorMessage: null,
+    errorMessage: '',
 }
 
 export default function userData(state = initialState, action) {
