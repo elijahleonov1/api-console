@@ -23,10 +23,29 @@ const validatePassword = (password = '', minSymbol = 3) => {
     )
 }
 
+const loadFromLocalStorege = (nameStore) => {
+    try {
+        const data = window.localStorage.getItem(nameStore)
+        return JSON.parse(data)
+    } catch (e) {
+        return {}
+    }
+}
+
+const saveToLocalStorege = (nameStore, data) => {
+    try {
+        window.localStorage.setItem(nameStore, JSON.stringify(data))
+    } catch (e) {
+        throw Error(e)
+    }
+}
+
 export default {
     validation: {
         email: validateEmail,
         sublogin: validateSublogin,
         password: validatePassword,
     },
+    saveToLocalStorege,
+    loadFromLocalStorege,
 }
