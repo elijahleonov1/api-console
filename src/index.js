@@ -17,7 +17,6 @@ import rootReducers from './store/rootReducers'
 import * as serviceWorker from './serviceWorker'
 
 import './assets/styled/index.scss'
-import authentication from './store/userData/reducer'
 
 const AUTH = 'IS_AUTH_REDUX'
 

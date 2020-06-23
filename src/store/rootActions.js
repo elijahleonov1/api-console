@@ -1,1 +1,1 @@
-export { fethAuth } from './userData/action'
+export { fethAuth } from './authentication/action'
