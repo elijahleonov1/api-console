@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react'
-import * as API from '@api'
-
+import Header from '@components/Header'
 const Console = () => {
-    useEffect(() => {
-        API.sendsay
-            .request({ action: 'sys.settings.get', list: ['about.id'] })
-            .then(function (res) {
-                debugger
-            })
-    })
+    const fullScreen = () => {}
+    const logout = () => {}
 
-    return <div>console</div>
+    return (
+        <div style={{ width: '100%' }}>
+            <Header
+                email={'ssss@asd.com'}
+                sublogin={'sss'}
+                handlerFullScreen={fullScreen}
+                handlerLogout={logout}
+            />
+        </div>
+    )
 }
 
 export default Console
