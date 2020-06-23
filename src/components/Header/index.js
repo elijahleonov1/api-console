@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import classNames from 'classnames'
@@ -6,13 +6,13 @@ import s from './Header.module.scss'
 
 import Logo from '@components/Logo'
 
-const Header = ({ email, sublogin, handlerLogout, handlerFullScreen }) => {
-    const [fullScreen, setFullScreen] = useState(false)
-    const toggleFullScreen = () => {
-        setFullScreen(!fullScreen)
-        handlerFullScreen()
-    }
-
+const Header = ({
+    email,
+    sublogin,
+    isFullScreen,
+    handlerLogout,
+    handlerFullScreen,
+}) => {
     return (
         <header className={s.Header}>
             <div className={s.LeftPanel}>
@@ -35,9 +35,9 @@ const Header = ({ email, sublogin, handlerLogout, handlerFullScreen }) => {
                 <button
                     className={classNames(
                         s.FullScrin,
-                        fullScreen ? s.Active : ''
+                        isFullScreen ? s.Active : ''
                     )}
-                    onClick={toggleFullScreen}
+                    onClick={handlerFullScreen}
                 ></button>
             </div>
         </header>
@@ -47,6 +47,7 @@ const Header = ({ email, sublogin, handlerLogout, handlerFullScreen }) => {
 Header.propTypes = {
     email: PropTypes.string.isRequired,
     sublogin: PropTypes.string,
+    isFullScreen: PropTypes.bool,
     handlerLogout: PropTypes.func,
     handlerFullScreen: PropTypes.func,
 }

@@ -15,7 +15,11 @@ body {
   color: $fontBaceColor;
 }
 
-#root{
+#root {
   display: flex;
   flex-grow: 1;
+}
+
+.fullscreen-enabled {
+  background: $whiteColor;
 }
