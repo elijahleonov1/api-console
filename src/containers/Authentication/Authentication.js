@@ -27,13 +27,15 @@ const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
 
     const handlerSubmit = (e) => {
         e.preventDefault()
+        const isSublogin = sublogin && sublogin.length > 0
 
-        const isLoginValid = utils.validation.email(login, 5) || true
+        const isLoginValid = isSublogin
+            ? utils.validation.sublogin(sublogin)
+            : utils.validation.email(login, 5)
         const isPasswordValid = utils.validation.password(password, 5)
-        const isSubloginValid =
-            sublogin && sublogin.length > 0
-                ? utils.validation.sublogin(sublogin)
-                : true
+        const isSubloginValid = isSublogin
+            ? utils.validation.sublogin(sublogin)
+            : true
 
         setErrorLogin(!isLoginValid)
         setErrorSublogin(!isSubloginValid)
