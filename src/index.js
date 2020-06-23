@@ -9,32 +9,40 @@ import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
+import utils from '@utils'
+
 import Router from './page/Router'
 import rootReducers from './store/rootReducers'
 
 import * as serviceWorker from './serviceWorker'
 
 import './assets/styled/index.scss'
+import authentication from './store/userData/reducer'
+
+const AUTH = 'IS_AUTH_REDUX'
 
 const history = createBrowserHistory()
 
-const getUserDataFromLocalStorage = (name) => {
-    return JSON.parse(window.localStorage.getItem(name)) || {}
+const initialState = () => {
+    const data = {}
+    const authentication = utils.loadFromLocalStorege(AUTH)
+
+    if (authentication) {
+        data.authentication = authentication
+    }
+
+    return data
 }
 
 const store = createStore(
     rootReducers(history),
-    {
-        userData: getUserDataFromLocalStorage('user_data'),
-    },
+    initialState(),
     composeWithDevTools(applyMiddleware(compose(thunk)))
 )
 
 store.subscribe(() => {
-    const { userData } = store.getState()
-    console.log(userData)
-
-    window.localStorage.setItem('user_data', JSON.stringify(userData))
+    const { authentication } = store.getState()
+    utils.saveToLocalStorege(AUTH, authentication)
 })
 
 ReactDOM.render(
