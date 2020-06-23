@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { fethAuth } from '@actions'
@@ -11,14 +11,6 @@ import Button from '@components/Button'
 import ErrorAlert from '@components/ErrorAlert'
 import GitLink from '@components/GitLink'
 import s from './Authentication.module.scss'
-
-const useFetchLogin = ({ login, sublogin, password }) => {
-    if (login && password) {
-        useEffect(() => {
-            fetchLogin({ login, sublogin, password })
-        }, [])
-    }
-}
 
 const Authentication = ({
     isAuth,
@@ -46,7 +38,9 @@ const Authentication = ({
         const isLoginValid = utils.validation.email(login, 5) || true
         const isPasswordValid = utils.validation.password(password, 5)
         const isSubloginValid =
-            sublogin.length > 0 ? utils.validation.sublogin(sublogin) : true
+            sublogin && sublogin.length > 0
+                ? utils.validation.sublogin(sublogin)
+                : true
 
         setErrorLogin(!isLoginValid)
         setErrorSublogin(!isSubloginValid)
@@ -54,7 +48,7 @@ const Authentication = ({
 
         if (!isLoginValid || !isSubloginValid || !isPasswordValid) return
 
-        useFetchLogin({ login, sublogin, password })
+        fetchLogin({ login, sublogin, password })
 
         setLogin('')
         setSublogin('')
@@ -62,7 +56,9 @@ const Authentication = ({
     }
 
     if (isAuth) {
-        useFetchLogin({ login, sublogin, password })
+        if (login && password) {
+            fetchLogin({ login, sublogin, password })
+        }
         return <Redirect push to="/console" />
     }
 

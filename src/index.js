@@ -19,7 +19,7 @@ import './assets/styled/index.scss'
 const history = createBrowserHistory()
 
 const getUserDataFromLocalStorage = (name) => {
-    return JSON.parse(window.localStorage.getItem(name))
+    return JSON.parse(window.localStorage.getItem(name)) || {}
 }
 
 const store = createStore(
