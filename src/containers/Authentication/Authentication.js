@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { fethAuth } from '@actions'
 
-import utils from '@utils/common'
+import utils from '@utils'
 
 import Logo from '@components/Logo'
 import Input from '@components/Input'
@@ -12,17 +12,10 @@ import ErrorAlert from '@components/ErrorAlert'
 import GitLink from '@components/GitLink'
 import s from './Authentication.module.scss'
 
-const Authentication = ({
-    isAuth,
-    errorMessageAuth,
-    fetchLogin,
-    login: storeLogin,
-    sublogin: storeSublogin,
-    password: storePassword,
-}) => {
-    const [login, setLogin] = useState(storeLogin)
-    const [sublogin, setSublogin] = useState(storeSublogin)
-    const [password, setPassword] = useState(storePassword)
+const Authentication = ({ isAuth, errorMessageAuth, fetchLogin }) => {
+    const [login, setLogin] = useState('')
+    const [sublogin, setSublogin] = useState('')
+    const [password, setPassword] = useState('')
 
     const [errorLogin, setErrorLogin] = useState(false)
     const [errorSublogin, setErrorSublogin] = useState(false)
@@ -56,9 +49,6 @@ const Authentication = ({
     }
 
     if (isAuth) {
-        if (login && password) {
-            fetchLogin({ login, sublogin, password })
-        }
         return <Redirect push to="/console" />
     }
 
@@ -113,11 +103,8 @@ const Authentication = ({
 }
 
 const mapStateToProps = (state) => ({
-    login: state.userData.login,
-    sublogin: state.userData.sublogin,
-    password: state.userData.password,
-    isAuth: state.userData.isAuth,
-    errorMessageAuth: state.userData.errorMessage,
+    isAuth: state.authentication.isAuth,
+    errorMessageAuth: state.authentication.errorMessage,
 })
 
 const mapDispatchToProps = (dispatch) => ({

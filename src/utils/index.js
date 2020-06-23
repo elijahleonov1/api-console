@@ -1,13 +1,13 @@
-const minCountSymbol = (str, count) => str.length >= count
+const minCountSymbol = (str = '', count = 3) => str.length >= count
 
-const validateEmail = (email, minSymbol = 3) => {
+const validateEmail = (email = '', minSymbol = 3) => {
     const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
     return (
         minCountSymbol(email, minSymbol) && re.test(String(email).toLowerCase())
     )
 }
 
-const validateSublogin = (sublogin, minSymbol = 3) => {
+const validateSublogin = (sublogin = '', minSymbol = 3) => {
     const re = /[a-z0-9]/
     return (
         minCountSymbol(sublogin, minSymbol) &&
@@ -15,7 +15,7 @@ const validateSublogin = (sublogin, minSymbol = 3) => {
     )
 }
 
-const validatePassword = (password, minSymbol = 3) => {
+const validatePassword = (password = '', minSymbol = 3) => {
     const re = /[a-z0-9]/
     return (
         minCountSymbol(password, minSymbol) &&

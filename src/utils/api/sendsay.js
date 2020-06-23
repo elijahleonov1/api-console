@@ -2,13 +2,13 @@ import Sendsay from 'sendsay-api'
 
 class SendsayDecorator {
     constructor() {
-        this.USER_DATA_AUTH = 'AUTH_DATA'
+        this.AUTH_DATA = 'AUTH_DATA'
         this._sendsay = new Sendsay()
     }
 
     _loadFromLocalStorege() {
         try {
-            const userData = window.localStorage.getItem(this.USER_DATA_AUTH)
+            const userData = window.localStorage.getItem(this.AUTH_DATA)
             return JSON.parse(userData)
         } catch (e) {
             return {}
@@ -18,7 +18,7 @@ class SendsayDecorator {
     _saveToLocalStorege(userData) {
         try {
             window.localStorage.setItem(
-                this.USER_DATA_AUTH,
+                this.AUTH_DATA,
                 JSON.stringify(userData)
             )
         } catch (e) {
@@ -44,25 +44,34 @@ class SendsayDecorator {
     }
 
     _newSendsayInstance() {
-        const {
-            login = '',
-            sublogin = '',
-            password = '',
-        } = this._loadFromLocalStorege()
-        return new Sendsay({
-            auth: {
-                login,
-                sublogin,
-                password,
-            },
-        })
+        try {
+            const {
+                login = '',
+                sublogin = '',
+                password = '',
+            } = this._loadFromLocalStorege()
+            return new Sendsay({
+                auth: {
+                    login,
+                    sublogin,
+                    password,
+                },
+            })
+        } catch (e) {}
     }
     async request(req) {
-        const sendsay = this._newSendsayInstance()
-        return await sendsay
-            .request(req)
-            .then((data) => data)
-            .catch((e) => e)
+        try {
+            const sendsay = this._newSendsayInstance()
+            return await sendsay
+                .request(req)
+                .then((data) => data)
+                .catch((e) => e)
+        } catch (e) {
+            return {
+                isAuth: false,
+                errorMessage: JSON.stringify({ errorMessage: e.message }),
+            }
+        }
     }
 }
 

@@ -9,11 +9,6 @@ export const fethAuth = ({ login, sublogin, password }) => async (dispatch) => {
     })
     dispatch({
         type: FETH_AUTH,
-        payload: {
-            ...data,
-            login,
-            sublogin,
-            password,
-        },
+        payload: data,
     })
 }

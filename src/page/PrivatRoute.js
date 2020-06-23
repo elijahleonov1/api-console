@@ -35,7 +35,7 @@ PrivatRote.propTupes = {
 }
 
 const mapStateToProps = (state) => ({
-    isAuth: state.userData.isAuth,
+    isAuth: state.authentication.isAuth,
 })
 
 export default connect(mapStateToProps, null)(PrivatRote)
