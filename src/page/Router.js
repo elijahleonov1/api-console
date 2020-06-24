@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 
 import PrivateRote from './PrivatRoute'
 
@@ -11,7 +11,6 @@ const Router = () => {
         <BrowserRouter>
             <Switch>
                 <Route path="/login" render={() => <Authentication />} />
-                <PrivateRote exact path="/" render={() => <div>Home</div>} />
 
                 <PrivateRote path="/console" render={() => <Console />} />
             </Switch>

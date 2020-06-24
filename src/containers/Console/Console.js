@@ -1,8 +1,11 @@
-import React, { useState, useRef } from 'react'
-import Fullscreen from 'react-full-screen'
-import s from './Console.module.scss'
-
+import ConsolePanel from '@components/ConsolePanel'
 import Header from '@components/Header'
+
+import React, { useState } from 'react'
+
+import Fullscreen from 'react-full-screen'
+
+import s from './Console.module.scss'
 
 const Console = () => {
     const [isFullScreen, setIsFullScreen] = useState(false)
@@ -29,6 +32,7 @@ const Console = () => {
                     handlerFullScreen={toogleFullScreen}
                     handlerLogout={logout}
                 />
+                <ConsolePanel />
             </Fullscreen>
         </div>
     )
