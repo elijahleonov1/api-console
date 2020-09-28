@@ -1,0 +1,22 @@
+@import "@styled/variables";
+
+.Wrapper {
+  position: relative;
+  display: flex;
+}
+
+.Console {
+  display: block;
+  width: 100%;
+  //height: 100vh;
+  border: 1px solid #ccc;
+  min-width: 100px;
+}
+
+.Separator {
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+}
